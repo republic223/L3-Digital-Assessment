@@ -1,6 +1,6 @@
 # importing relevent 3rd party software.
 import sqlite3
-from flask import Flask, g
+from flask import Flask, g, render_template
 
 # Varibles and constants below
 app = Flask(__name__)
@@ -31,7 +31,7 @@ def query_db(query, args=(), one=False):
 def Test_Route():
     sql = '''SELECT * FROM Shows_Display; '''
     results = query_db(sql)
-    return results
+    return render_template('Header.html', results=results)  
 
 # Used to run the app in debug mode this will be usful if error occur during devlopment.
 if __name__ == "__main__":
