@@ -34,7 +34,27 @@ def Test_Route():
 FROM Shows_display
 JOIN Age_rating ON Shows_display.Rating_id = Age_Rating.Rating_id; '''
     results = query_db(sql)
-    return render_template('Main.html', results=results)  
+    return render_template('Main.html', results=results) 
+
+#TV Shows route
+@app.route("/TV_Shows")
+def TV_Route():
+    sql = '''SELECT show_id, title, Year, Rating, Poster_image
+FROM Shows_display
+JOIN Age_rating ON Shows_display.Rating_id = Age_Rating.Rating_id
+WHERE Shows_display.Type_id = 2; ''' 
+    results = query_db(sql)
+    return render_template('Main.html', results= results)
+
+#Movies route
+@app.route("/Movies")
+def Movie_Route():
+    sql = '''SELECT show_id, title, Year, Rating, Poster_image
+FROM Shows_display
+JOIN Age_rating ON Shows_display.Rating_id = Age_Rating.Rating_id
+WHERE Shows_display.Type_id = 1; ''' 
+    results = query_db(sql)
+    return render_template('Main.html', results= results)
 
 # Used to run the app in debug mode this will be usful if error occur during devlopment.
 if __name__ == "__main__":
