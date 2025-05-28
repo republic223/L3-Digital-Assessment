@@ -30,9 +30,11 @@ def query_db(query, args=(), one=False):
 #Testing Home Route.
 @app.route("/")
 def Test_Route():
-    sql = '''SELECT * FROM Shows_Display; '''
+    sql = '''SELECT show_id, title, Year, Rating, Poster_image
+FROM Shows_display
+JOIN Age_rating ON Shows_display.Rating_id = Age_Rating.Rating_id; '''
     results = query_db(sql)
-    return render_template('Header.html', results=results)  
+    return render_template('Main.html', results=results)  
 
 # Used to run the app in debug mode this will be usful if error occur during devlopment.
 if __name__ == "__main__":

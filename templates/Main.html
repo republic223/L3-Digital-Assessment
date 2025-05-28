@@ -1,0 +1,18 @@
+<!-- Makes Header.html show on the page -->
+{% extends 'Header.html' %}
+<!-- where this file extends from -->
+{% block start %}
+<h1 class="Section_Header">Home page</h1>
+<div class="card">
+    {% for Shows_Display in results %}
+    <a href="/">
+        <div class="Movie_cards">
+            <img src="{{ Shows_Display[4] }}", alt="{{ Shows_Display[1] }}Movie Poster.">
+            <h1>{{ Shows_Display[1] }}</h1>
+            <h3>{{ Shows_Display[3] }}</h3>
+            <h2>{{ Shows_Display[2] }}</h2>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

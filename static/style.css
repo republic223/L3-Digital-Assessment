@@ -1,6 +1,12 @@
 body{
     margin: 0;
 }
+/* Section Header adjustments go here */
+.Section_Header{
+    text-align: center;
+}
+
+
 /* All logo adjustments go here */
 .Logo{
 padding-top: 10px;
@@ -39,4 +45,18 @@ overflow: hidden;
 }
 .Navigation li.right_nav{
     float: right;
+}
+.card{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 100px;
+}
+.Movie_cards{
+    width: 325px;
+    overflow: hidden;
+}
+.Movie_cards img{
+   width: 100%;
+   height: auto; 
 }
