@@ -1,0 +1,18 @@
+<!-- Makes Header.html show on the page -->
+{% extends 'Header.html' %}
+<!-- where this file extends from -->
+{% block start %}
+<h1>Log In</h1>
+<!-- testing user login seesion worked -->
+    {% if session['username'] %}
+        <p>Welcome {{ session['username'][1] }}</p>
+    {% endif %}
+<!-- form used to provide the user input to compare with database results -->
+ <form action="/Login", method="post">
+    <label for='username'>Username</label>
+    <input type="text", name='username'>
+    <label for='password'>Password</label>
+    <input type="text", name='password'>
+    <button type="enter">Log In</button>
+ </form>
+{% endblock %}
