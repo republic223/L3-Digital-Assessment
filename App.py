@@ -77,8 +77,8 @@ def login():
                 flash("Logged In")
             else:
                 flash("Password incorrect")
-    else:
-        flash("Username does not exist")
+        else:
+            flash("Username does not exist")
     return render_template('Login.html')
 
 # Used to run the app in debug mode this will be usful if error occur during devlopment.
