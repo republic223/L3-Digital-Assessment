@@ -59,6 +59,25 @@ WHERE Shows_display.Type_id = 1; '''
     results = query_db(sql)
     return render_template('Main.html', results= results)
 
+# Director_Select route
+@app.route('/Director_Select')
+def Director_Select():
+    sql = '''SELECT Directors, Director_id FROM Director;'''
+    results = query_db(sql)
+    return render_template('Selection.html', results = results)
+
+#Directors movies route
+@app.route('/Director/<int:Director_id>')
+def Director_Movies(Director_id):
+    sql = '''SELECT Shows_display.Show_id, title, Year, Rating, Poster_image
+FROM Shows_display
+JOIN Age_rating ON Shows_Display.Rating_id = Age_Rating.Rating_id
+JOIN Show_Director ON Shows_Display.Show_id = Show_Director.Show_id
+JOIN Director on Show_director.Director_id = Director.Director_id
+WHERE Show_Director.Director_id = ?; '''
+    results = query_db(sql, args=(Director_id,), one= False)
+    return render_template('Main.html', results = results)
+
 #Log in route
 @app.route('/Login', methods=["GET","POST"])
 def login():
