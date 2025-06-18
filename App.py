@@ -64,7 +64,7 @@ WHERE Shows_display.Type_id = 1; '''
 def Director_Select():
     sql = '''SELECT Directors, Director_id FROM Director;'''
     results = query_db(sql)
-    return render_template('Selection.html', results = results)
+    return render_template('Director_Select.html', results = results)
 
 #Directors movies route
 @app.route('/Director/<int:Director_id>')
@@ -76,6 +76,44 @@ JOIN Show_Director ON Shows_Display.Show_id = Show_Director.Show_id
 JOIN Director on Show_director.Director_id = Director.Director_id
 WHERE Show_Director.Director_id = ?; '''
     results = query_db(sql, args=(Director_id,), one= False)
+    return render_template('Main.html', results = results)
+
+# Country_Select route
+@app.route('/Country_Select')
+def Country_Select():
+    sql = '''SELECT Country, Country_id FROM Country;'''
+    results = query_db(sql)
+    return render_template('Country_Select.html', results = results)
+
+#Countries movies route
+@app.route('/Country/<int:Country_id>')
+def Country_Movies(Country_id):
+    sql = '''SELECT Shows_display.Show_id, title, Year, Rating, Poster_image
+FROM Shows_display
+JOIN Age_rating ON Shows_Display.Rating_id = Age_Rating.Rating_id
+JOIN Show_Country ON Shows_Display.Show_id = Show_Country.Show_id
+JOIN Country on Show_Country.Country_id = Country.Country_id
+WHERE Show_Country.Country_id = ?; '''
+    results = query_db(sql, args=(Country_id,), one= False)
+    return render_template('Main.html', results = results)
+
+# Genre_Select route
+@app.route('/Genre_Select')
+def Genre_Select():
+    sql = '''SELECT Genre, Genre_id FROM Genre;'''
+    results = query_db(sql)
+    return render_template('Genre_Select.html', results = results)
+
+#Countries movies route
+@app.route('/Genre/<int:Genre_id>')
+def Genre_Movies(Genre_id):
+    sql = '''SELECT Shows_display.Show_id, title, Year, Rating, Poster_image
+FROM Shows_display
+JOIN Age_rating ON Shows_Display.Rating_id = Age_Rating.Rating_id
+JOIN Show_Genre ON Shows_Display.Show_id = Show_Genre.Show_id
+JOIN Genre on Show_Genre.Genre_id = Genre.Genre_id
+WHERE Show_Genre.Genre_id = ?; '''
+    results = query_db(sql, args=(Genre_id,), one= False)
     return render_template('Main.html', results = results)
 
 #Log in route

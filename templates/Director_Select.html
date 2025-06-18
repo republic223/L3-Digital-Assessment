@@ -4,10 +4,11 @@
 {% block start %}
     <h1> Select your Director</h1>
     {% for Director in results %}
-    <a href="/Director/{{Director[1]}}">
-        <div class="Director">   
-            <h3>{{Director[0]}}</h3>
-        </div>
-    </a>
+        <a href="/Director/{{Director[1]}}">
+            <!-- Class to change all of the selection pages -->
+            <div class="Selection">   
+                <h3>{{Director[0]}}</h3>
+            </div>
+        </a>
     {% endfor %}
 {% endblock %}
