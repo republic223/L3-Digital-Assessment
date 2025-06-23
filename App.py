@@ -24,9 +24,14 @@ def close_connection(exception):
         db.close()
 
 # Function to make querying the database simple.
-def query_db(query, args=(), one=False):
-    cur = get_db().execute(query, args)
-    rv = cur.fetchall()
+def query_db(query, args=(), one=False, commit=False):
+    db = get_db()
+    cur = db.cursor()
+    cur.execute(query, args)
+    # added to ensure results commit to the database
+    if commit:
+        db.commit()
+    rv =cur.fetchall()    
     cur.close()
     return (rv[0] if rv else None) if one else rv 
 
@@ -115,6 +120,23 @@ JOIN Genre on Show_Genre.Genre_id = Genre.Genre_id
 WHERE Show_Genre.Genre_id = ?; '''
     results = query_db(sql, args=(Genre_id,), one= False)
     return render_template('Main.html', results = results)
+
+# Sign Up route
+@app.route('/Sign_up', methods=["GET","POST"])
+def Sign_up():
+    if request.method == "POST":
+        Username = request.form['username']
+        password0 = request.form['password0']
+        password1 = request.form['password1']
+        # check to see if passwords match
+        if password0 == password1:
+            Password = password0
+            sql = '''INSERT INTO User_Data (Username,Password) VALUES (?,?)'''
+            query_db(sql, args=(Username, Password,), commit=True)
+            flash("Sign up successful")
+        else:
+            flash("Please ensure both Passwords match")
+    return render_template('Sign_up.html')
 
 #Log in route
 @app.route('/Login', methods=["GET","POST"])

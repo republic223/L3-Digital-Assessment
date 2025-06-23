@@ -1,0 +1,17 @@
+<!-- Makes Header.html show on the page -->
+{% extends 'Header.html' %}
+<!-- where this file extends from -->
+{% block start %}
+<h1>Sign up page</h1>
+<!-- Form for user to input their creditals for adding to the database -->
+ <form action="/Sign_up", method="post">
+    <Label for ='username'>Enter your Username</Label>
+    <input type="text", name="username">
+    <label for='password0'>Enter your password</label>
+    <input type="text", name='password0'>
+    <!-- will match passwords in App.py to ensure user has entered password correctly -->
+    <label for='password1'>Retype password to comfrim</label>
+    <input type="text", name='password1'>
+    <button type="submit">Sign up</button>
+ </form>
+{% endblock %}
