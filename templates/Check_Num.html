@@ -1,0 +1,14 @@
+<!-- Makes Header.html show on the page -->
+{% extends 'Header.html' %}
+<!-- where this file extends from -->
+{% block start %}
+<!-- check number page -->
+<div class="Check_Num">
+    <h1>Here is your Check Number</h1>
+    <h2>Be sure to write down as you will not be able to enter without it</h2>
+    {% for results in results %}
+    <h3>Your Check Number: {{results[0]}} </h3>
+    {% endfor %}
+</div>
+
+{% endblock %}

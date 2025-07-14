@@ -1,6 +1,7 @@
 # importing relevent 3rd party software.
 import sqlite3
 from flask import Flask, g, render_template, request, flash, session, redirect
+from werkzeug.security import generate_password_hash, check_password_hash
 
 # Varibles and constants below
 app = Flask(__name__)
@@ -130,13 +131,23 @@ def Sign_up():
         password1 = request.form['password1']
         # check to see if passwords match
         if password0 == password1:
-            Password = password0
+            Hash_Password = generate_password_hash(password0)
             sql = '''INSERT INTO User_Data (Username,Password) VALUES (?,?)'''
-            query_db(sql, args=(Username, Password,), commit=True)
+            query_db(sql, args=(Username, Hash_Password,), commit=True)
             flash("Sign up successful")
+            return redirect('/Check_Number',)
         else:
             flash("Please ensure both Passwords match")
     return render_template('Sign_up.html')
+
+# Check Number Route
+@app.route('/Check_Number')
+def Check_number():
+    # Check Number at the momment is the Max Value of the user ID so they can be uniquly identified
+    # will need to be improved on if users want to delete data
+    sql = '''Select MAX(User_ID) FROM User_Data;'''
+    results = query_db(sql)
+    return render_template('Check_Num.html', results=results)
 
 #Log in route
 @app.route('/Login', methods=["GET","POST"])
@@ -145,17 +156,20 @@ def login():
         # find username and password
         username = request.form['username']
         password = request.form['password']
+        Check_Num = request.form['Check_Num']
         sql = '''SELECT User_id, Username, Password FROM User_Data WHERE Username = ?; '''
         user = query_db(sql, args=(username,), one=True)
-        pword = query_db(sql, args=(password,), one=True)
         # need to use User_id to keep the use of the same username for two users
         if user:
             # if user found program will check the Password
-            if pword:
-                session['username'] = user
-                flash("Logged In")
+            if int(Check_Num) == user[0]:
+                if check_password_hash(password=password, pwhash=user[2]):
+                    session['username'] = user[1]
+                    flash("Logged In")
+                else:
+                    flash("Password incorrect")
             else:
-                flash("Password incorrect")
+               flash("Check Number Incorrect")      
         else:
             flash("Username does not exist")
     return render_template('Login.html')
