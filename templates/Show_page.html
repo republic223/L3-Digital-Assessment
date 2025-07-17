@@ -1,0 +1,13 @@
+<!-- Makes Header.html show on the page -->
+{% extends 'Header.html' %}
+<!-- where this file extends from -->
+{% block start %}
+{% for Shows_Display in results %}
+<div class="Show_page">
+    {{results}}
+    <div class="Show_page_poster">
+        <img src="{{Shows_Display[11]}}" alt="{{Shows_Display[1]}} Poster">
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

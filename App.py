@@ -43,7 +43,27 @@ def Test_Route():
 FROM Shows_display
 JOIN Age_rating ON Shows_display.Rating_id = Age_Rating.Rating_id; '''
     results = query_db(sql)
-    return render_template('Main.html', results=results) 
+    return render_template('Main.html', results=results)
+
+# Show page route
+@app.route("/Show_page/<int:Show_id>")
+def Show_page(Show_id):
+    sql = '''SELECT Shows_display.Show_id, title, 
+GROUP_CONCAT(DISTINCT Director.Directors) AS Directors,
+GROUP_CONCAT(DISTINCT Country.Country ) AS Country,
+GROUP_CONCAT(DISTINCT Genre.Genre) AS Genre, 
+actors, Date_added, Year, Rating_image, Duration, Description, Poster_image
+FROM Shows_display
+JOIN Age_rating ON Shows_Display.Rating_id = Age_Rating.Rating_id
+left JOIN Show_Director ON Shows_Display.Show_id = Show_Director.Show_id
+left JOIN Director on Show_director.Director_id = Director.Director_id
+left JOIN Show_Country ON Shows_Display.Show_id = Show_Country.Show_id
+left JOIN Country on Show_Country.Country_id = Country.Country_id
+left JOIN Show_Genre ON Shows_Display.Show_id = Show_Genre.Show_id
+left JOIN Genre on Show_Genre.Genre_id = Genre.Genre_id
+WHERE Shows_display.Show_id = ?;'''
+    results = query_db(sql, args=(Show_id,), one=False)
+    return render_template('Show_page.html', results = results) 
 
 #TV Shows route
 @app.route("/TV_Shows")

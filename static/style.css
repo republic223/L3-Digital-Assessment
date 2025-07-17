@@ -60,3 +60,13 @@ overflow: hidden;
    width: 100%;
    height: auto; 
 }
+/* all show page adjustments go here */
+.Show_page{
+    width: auto;
+    height: auto;
+}
+
+.Show_page_poster img{
+    width: auto;
+    height: 750px;
+}
