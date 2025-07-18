@@ -186,13 +186,24 @@ def login():
                 if check_password_hash(password=password, pwhash=user[2]):
                     session['username'] = user[1]
                     flash("Logged In")
+                # if password does not match program will flash password incorrect
                 else:
                     flash("Password incorrect")
+            # if check number incorrect program will let user know
             else:
                flash("Check Number Incorrect")      
+        # if username not found program will let user know
         else:
             flash("Username does not exist")
     return render_template('Login.html')
+
+# sign out route
+@app.route("/Sign_out")
+def Sign_out():
+    # clears session and returns user to the homepage
+    session['username'] = None
+    return redirect('/')
+    
 
 # Used to run the app in debug mode this will be usful if error occur during devlopment.
 if __name__ == "__main__":
