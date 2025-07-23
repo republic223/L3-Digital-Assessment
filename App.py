@@ -39,7 +39,7 @@ def query_db(query, args=(), one=False, commit=False):
 #Testing Home Route.
 @app.route("/")
 def Test_Route():
-    sql = '''SELECT show_id, title, Year, Rating, Poster_image
+    sql = '''SELECT show_id, title, Year, Rating_image, Poster_image, Rating
 FROM Shows_display
 JOIN Age_rating ON Shows_display.Rating_id = Age_Rating.Rating_id; '''
     results = query_db(sql)
@@ -52,7 +52,7 @@ def Show_page(Show_id):
 GROUP_CONCAT(DISTINCT Director.Directors) AS Directors,
 GROUP_CONCAT(DISTINCT Country.Country ) AS Country,
 GROUP_CONCAT(DISTINCT Genre.Genre) AS Genre, 
-actors, Date_added, Year, Rating_image, Duration, Description, Poster_image
+actors, Date_added, Year, Rating_image, Duration, Description, Poster_image, Director.Director_id, Country.Country_id, Genre.Genre_id, Rating
 FROM Shows_display
 JOIN Age_rating ON Shows_Display.Rating_id = Age_Rating.Rating_id
 left JOIN Show_Director ON Shows_Display.Show_id = Show_Director.Show_id
@@ -68,9 +68,10 @@ WHERE Shows_display.Show_id = ?;'''
 #TV Shows route
 @app.route("/TV_Shows")
 def TV_Route():
-    sql = '''SELECT show_id, title, Year, Rating, Poster_image
+    sql = '''SELECT show_id, title, Year, Rating_image, Poster_image, Rating, Type
 FROM Shows_display
 JOIN Age_rating ON Shows_display.Rating_id = Age_Rating.Rating_id
+JOIN Movie_types ON Shows_display.Type_id = Movie_types.Type_id
 WHERE Shows_display.Type_id = 2; ''' 
     results = query_db(sql)
     return render_template('Main.html', results= results)
@@ -78,9 +79,10 @@ WHERE Shows_display.Type_id = 2; '''
 #Movies route
 @app.route("/Movies")
 def Movie_Route():
-    sql = '''SELECT show_id, title, Year, Rating, Poster_image
+    sql = '''SELECT show_id, title, Year, Rating_image, Poster_image, Rating, Type
 FROM Shows_display
 JOIN Age_rating ON Shows_display.Rating_id = Age_Rating.Rating_id
+JOIN Movie_types ON Shows_display.Type_id = Movie_types.Type_id
 WHERE Shows_display.Type_id = 1; ''' 
     results = query_db(sql)
     return render_template('Main.html', results= results)

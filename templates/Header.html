@@ -1,19 +1,23 @@
 <!-- HTML set up -->
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <!-- Font style sheets -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap">
+    <!-- Title -->
     <title>JDs Movies and TV Shows</title>
 </head>
-
 <body>
     <!-- logo class for forming title -->
 <div class="Logo">
     <h1>JDs Movies and TV Shows</h1>
 </div>
 <!-- Navigation bar for header -->
+<!-- will have to make this fix at top of page when scrolling -->
 <nav class="Navigation">
     <ul>
         <li class="left_nav"><a href="/">Home</a></li>
@@ -46,5 +50,6 @@
             </ul>
         {% endif %}
     {% endwith %}
+<!-- Footer to be made -->
 </body>
 </html>

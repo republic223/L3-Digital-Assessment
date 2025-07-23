@@ -1,7 +1,7 @@
 <!-- Makes Header.html show on the page -->
 {% extends 'Header.html' %}
 <!-- where this file extends from -->
-{% block start %}
+{% block start %} 
     <h1> Select your Director</h1>
     {% for Director in results %}
         <a href="/Director/{{Director[1]}}">

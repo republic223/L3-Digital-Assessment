@@ -3,11 +3,42 @@
 <!-- where this file extends from -->
 {% block start %}
 {% for Shows_Display in results %}
-<div class="Show_page">
-    {{results}}
-    <div class="Show_page_poster">
-        <img src="{{Shows_Display[11]}}" alt="{{Shows_Display[1]}} Poster">
-    </div>
-{% endfor %}
+<div class="Show_page_Header">
+    <h1>{{Shows_Display[1]}}</h1>
 </div>
+<div class="Show_page">
+    <img class="Show_page_poster" src="{{Shows_Display[11]}}" alt="{{Shows_Display[1]}} Poster">
+</div>
+<div class="Show_page">
+    <table class="Show_page_Info">
+        <tr>
+            <td>Release Year: {{Shows_Display[7]}}</td>
+            <td><img src="{{Shows_Display[8]}}" alt="{{Shows_Display[15]}} image"></td>
+        </tr>
+        <tr>
+        <!-- will redirect to Director page when clicked -->
+        <td>Directors: <a href="/Director/{{Shows_Display[12]}}">{{Shows_Display[2]}}</a></td>
+        </tr>
+        <tr>
+            <td>Countries: <a href="/Country/{{Shows_Display[13]}}">{{Shows_Display[3]}}</a></td>
+        </tr>
+        <tr>
+            <td>Genres: <a href="/Genre/{{Shows_Display[14]}}">{{Shows_Display[4]}}</a></td>
+        </tr>
+        <tr>
+            <td>Actors: {{Shows_Display[5]}}</td>
+        </tr>
+        <tr>
+            <td>Date Added: {{Shows_Display[6]}}</td>
+        </tr>
+        
+        <tr>
+            <td>Duration: {{Shows_Display[9]}}</td>
+        </tr>
+        <tr>
+            <td>Description: {{Shows_Display[10]}}</td>
+        </tr>
+    </table>
+</div>
+{% endfor %}
 {% endblock %}

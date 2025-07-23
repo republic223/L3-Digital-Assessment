@@ -1,5 +1,10 @@
+/* overall adjustments go here */
 body{
     margin: 0;
+    background-color: #b4cded;
+}
+a{
+    text-decoration: none;
 }
 /* Section Header adjustments go here */
 .Section_Header{
@@ -9,13 +14,14 @@ body{
 
 /* All logo adjustments go here */
 .Logo{
-padding-top: 10px;
+padding-top: 0px;
 padding-left: 10px;
 padding-right: 0;
 padding-bottom: 0;
 background: #bfcc94;
 border: solid;
 border-color: black;
+font-family: "Oswald";
 
 
 /* All navigation adjustments go here */
@@ -26,6 +32,9 @@ border-color: black;
     border: solid;
     border-color: rgb(0, 0, 0);
     border-top: none;
+    font-family: "Cal Sans";
+    /* position: fixed;
+    width: 100%; */
    
 }
 .Navigation ul{
@@ -46,27 +55,70 @@ overflow: hidden;
 .Navigation li.right_nav{
     float: right;
 }
+/* All card adjustments go here */
 .card{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 100px;
+    
+    
 }
-.Movie_cards{
+.Movie_cards {
     width: 325px;
+    height: 615px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
     overflow: hidden;
+    border: solid;
+    border-color: black;
+    background-color: #344966;
+    color: #f0f4ef;
+    td{
+        width: 50%;
+    }
 }
-.Movie_cards img{
+.Movie_cards_poster{
    width: 100%;
-   height: auto; 
+   height: 450px; 
+}
+.Movie_cards_rating{
+    width: 50%;
+    height: auto;
+    float: right;
+}
+.Movie_cards_table{
+    width: 100%;
 }
 /* all show page adjustments go here */
 .Show_page{
     width: auto;
     height: auto;
+    display: inline-block;
+    float:left;
+    margin-top: 15px;
+    
 }
-
-.Show_page_poster img{
+.Show_page_Header{
+    text-align: center;
+    border: solid;
+    border-color: black;
+    border-top: none;
+}
+.Show_page_poster {
     width: auto;
     height: 750px;
+    margin-left: 200px;
+    margin-right: 250px;
+}
+.Show_page_Info{
+    width: 750px;
+    height: auto;
+    border-color: black;
+    border: solid;
+}
+.Show_page_Info img{
+    height: 75px;
+    width: auto;
 }
