@@ -41,7 +41,8 @@ def query_db(query, args=(), one=False, commit=False):
 def Test_Route():
     sql = '''SELECT show_id, title, Year, Rating_image, Poster_image, Rating
 FROM Shows_display
-JOIN Age_rating ON Shows_display.Rating_id = Age_Rating.Rating_id; '''
+JOIN Age_rating ON Shows_display.Rating_id = Age_Rating.Rating_id
+ORDER BY title ASC; '''
     results = query_db(sql)
     return render_template('Main.html', results=results)
 
@@ -72,7 +73,8 @@ def TV_Route():
 FROM Shows_display
 JOIN Age_rating ON Shows_display.Rating_id = Age_Rating.Rating_id
 JOIN Movie_types ON Shows_display.Type_id = Movie_types.Type_id
-WHERE Shows_display.Type_id = 2; ''' 
+WHERE Shows_display.Type_id = 2
+ORDER BY title ASC; ''' 
     results = query_db(sql)
     return render_template('Main.html', results= results)
 
@@ -83,14 +85,16 @@ def Movie_Route():
 FROM Shows_display
 JOIN Age_rating ON Shows_display.Rating_id = Age_Rating.Rating_id
 JOIN Movie_types ON Shows_display.Type_id = Movie_types.Type_id
-WHERE Shows_display.Type_id = 1; ''' 
+WHERE Shows_display.Type_id = 1
+ORDER BY title ASC; ''' 
     results = query_db(sql)
     return render_template('Main.html', results= results)
 
 # Director_Select route
 @app.route('/Director_Select')
 def Director_Select():
-    sql = '''SELECT Directors, Director_id FROM Director;'''
+    sql = '''SELECT Directors, Director_id FROM Director
+    ORDER BY Directors ASC;'''
     results = query_db(sql)
     return render_template('Director_Select.html', results = results)
 
@@ -102,14 +106,16 @@ FROM Shows_display
 JOIN Age_rating ON Shows_Display.Rating_id = Age_Rating.Rating_id
 JOIN Show_Director ON Shows_Display.Show_id = Show_Director.Show_id
 JOIN Director on Show_director.Director_id = Director.Director_id
-WHERE Show_Director.Director_id = ?; '''
+WHERE Show_Director.Director_id = ?
+; '''
     results = query_db(sql, args=(Director_id,), one= False)
     return render_template('Main.html', results = results)
 
 # Country_Select route
 @app.route('/Country_Select')
 def Country_Select():
-    sql = '''SELECT Country, Country_id FROM Country;'''
+    sql= '''SELECT Country, Country_id FROM Country
+            ORDER BY Country ASC;'''
     results = query_db(sql)
     return render_template('Country_Select.html', results = results)
 
@@ -128,7 +134,8 @@ WHERE Show_Country.Country_id = ?; '''
 # Genre_Select route
 @app.route('/Genre_Select')
 def Genre_Select():
-    sql = '''SELECT Genre, Genre_id FROM Genre;'''
+    sql = '''SELECT Genre, Genre_id FROM Genre
+    ORDER BY Genre ASC;'''
     results = query_db(sql)
     return render_template('Genre_Select.html', results = results)
 

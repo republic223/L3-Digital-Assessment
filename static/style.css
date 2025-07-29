@@ -14,18 +14,20 @@ a{
 
 /* All logo adjustments go here */
 .Logo{
-padding-top: 0px;
-padding-left: 10px;
-padding-right: 0;
-padding-bottom: 0;
-background: #bfcc94;
-border: solid;
-border-color: black;
-font-family: "Oswald";
-
+    padding-top: 0px;
+    padding-left: 10px;
+    padding-right: 0;
+    padding-bottom: 0;
+    background: #bfcc94;
+    border: solid;
+    border-color: black;
+    font-family: "Oswald";
+    position: relative;
+    z-index: 2;
+}
 
 /* All navigation adjustments go here */
-}
+
 .Navigation{
     background-color: powderblue;
     padding-top: 5px;
@@ -33,8 +35,11 @@ font-family: "Oswald";
     border-color: rgb(0, 0, 0);
     border-top: none;
     font-family: "Cal Sans";
-    /* position: fixed;
-    width: 100%; */
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
    
 }
 .Navigation ul{
@@ -48,6 +53,7 @@ overflow: hidden;
     display: block;
     background-color: #f0f4ef;
     margin-left: 5px;
+    margin-right: 10px;
 }
 .Navigation li.left_nav{
     float: left;
