@@ -1,0 +1,17 @@
+<!-- Makes Header.html show on the page -->
+{% extends 'Header.html' %}
+<!-- where this file extends from -->
+{% block start %}
+<div class="Section_Header">
+    <h1><style> h1{margin-top: 0;} </style>Error 505</h1>
+    <h2>HTTP Version Not Supported</h2>
+</div>
+<div class="Error_Page_Message">
+    <h1>Oh No! Looks like Your browser can't run our site.</h1>
+    <h2>Please Update your browser or switch to a later HTTP version</h2>
+    <h2>|</h2>
+    <h2>|</h2>
+    <h2>V</h2>
+    <img class="Error_image" src="https://media1.tenor.com/m/sbfBfp3FeY8AAAAC/oia-uia.gif" alt="Cat image sorry if it is not loaded">
+</div>
+{% endblock %}

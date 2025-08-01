@@ -1,0 +1,19 @@
+<!-- Makes Header.html show on the page -->
+{% extends 'Header.html' %}
+<!-- where this file extends from -->
+{% block start %}
+<div class="Section_Header">
+    <h1><style> h1{margin-top: 0;} </style>Error 404</h1>
+    <h2>Page not found</h2>
+</div>
+<div class="Error_Page_Message">
+    <h1>Oh No! Looks like you have found something that doesn't exist.</h1>
+    <h2>Click the button below to go home.</h2>
+    <h2>|</h2>
+    <h2>|</h2>
+    <h2>V</h2>
+</div>
+<div class="Error_Page_Return">
+    <a class="Error_page_button" href="/">Go home</a>
+</div>
+{% endblock %}

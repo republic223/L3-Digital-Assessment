@@ -36,6 +36,24 @@ def query_db(query, args=(), one=False, commit=False):
     cur.close()
     return (rv[0] if rv else None) if one else rv 
 
+# Error code Handlers go here
+@app.errorhandler(404)
+def Page_Not_Found(error):
+    return render_template('404.html')
+
+@app.errorhandler(500)
+def Server_error(error):
+    return render_template('500.html')
+
+@app.errorhandler(505)
+def HTTP_version_incorrect(error):
+    render_template('505.html')
+
+# Used to develop the error pages only temporary will be removed 
+@app.route("/1")
+def error_page():
+    return render_template('505.html')
+
 #Testing Home Route.
 @app.route("/")
 def Test_Route():

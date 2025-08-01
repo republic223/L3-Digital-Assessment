@@ -2,13 +2,20 @@
 body{
     margin: 0;
     background-color: #b4cded;
+    font-family: "Oswald";
+    
 }
 a{
     text-decoration: none;
 }
 /* Section Header adjustments go here */
 .Section_Header{
+    border: solid;
+    border-top: none;
     text-align: center;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 5px;
 }
 
 
@@ -25,6 +32,28 @@ a{
     position: relative;
     z-index: 2;
 }
+/* Error handler page adjustments go here */
+.Error_Page_Return{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 25px;
+    a{
+        text-decoration: none;
+        background-color: #f0f4ef;
+        padding: 5px;
+        border: solid;
+        border-radius: 5px;
+    }
+}
+.Error_Image img{ 
+    align-items: center;
+    width: 25%;
+    height: 25%;
+}
+.Error_Page_Message{
+    text-align: center;
+    margin-top: 75px;
+}    
 
 /* All navigation adjustments go here */
 
@@ -101,7 +130,7 @@ overflow: hidden;
 .Show_page{
     width: auto;
     height: auto;
-    display: inline-block;
+    display: block;
     float:left;
     margin-top: 15px;
     
