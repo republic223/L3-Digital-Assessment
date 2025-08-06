@@ -169,6 +169,20 @@ WHERE Show_Genre.Genre_id = ?; '''
     results = query_db(sql, args=(Genre_id,), one= False)
     return render_template('Main.html', results = results)
 
+#Copyright Disclaimer route
+@app.route("/Copyright_Disclaimer")
+def Copyright_Disclaimer():
+    return render_template('Copyright.html')
+
+# About page route
+@app.route("/About")
+def About():
+    return render_template("About.html")
+
+@app.route("/Issues")
+def  Issues():
+    return render_template("Issues.html")
+
 # Sign Up route
 @app.route('/Sign_up', methods=["GET","POST"])
 def Sign_up():
