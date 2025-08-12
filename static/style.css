@@ -95,8 +95,8 @@ overflow: hidden;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 100px;
-    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-bottom: 100px;
     
     
 }
@@ -160,6 +160,21 @@ overflow: hidden;
 .Show_page_Info img{
     height: 75px;
     width: auto;
+}
+/* All Copyright Adjustments go here */
+.Copyright_Info{
+    font-variant: lighter;
+    text-align: center;
+}
+.Copyright_Links{
+    margin-top: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 100px;
+}
+/* All About adjustments go here */
+.About_info{
+    text-align: center;
 }
 /* All Footer adjustments go here */
 .Footer{
