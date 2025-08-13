@@ -62,7 +62,7 @@ FROM Shows_display
 JOIN Age_rating ON Shows_display.Rating_id = Age_Rating.Rating_id
 ORDER BY title ASC; '''
     results = query_db(sql)
-    return render_template('Main.html', results=results)
+    return render_template('Home.html', results=results)
 
 # Show page route
 @app.route("/Show_page/<int:Show_id>")
@@ -94,7 +94,7 @@ JOIN Movie_types ON Shows_display.Type_id = Movie_types.Type_id
 WHERE Shows_display.Type_id = 2
 ORDER BY title ASC; ''' 
     results = query_db(sql)
-    return render_template('Main.html', results= results)
+    return render_template('TV_Show.html', results= results)
 
 #Movies route
 @app.route("/Movies")
@@ -106,7 +106,7 @@ JOIN Movie_types ON Shows_display.Type_id = Movie_types.Type_id
 WHERE Shows_display.Type_id = 1
 ORDER BY title ASC; ''' 
     results = query_db(sql)
-    return render_template('Main.html', results= results)
+    return render_template('Movie.html', results= results)
 
 # Director_Select route
 @app.route('/Director_Select')
@@ -119,7 +119,7 @@ def Director_Select():
 #Directors movies route
 @app.route('/Director/<int:Director_id>')
 def Director_Movies(Director_id):
-    sql = '''SELECT Shows_display.Show_id, title, Year, Rating, Poster_image
+    sql = '''SELECT Shows_display.Show_id, title, Year, Rating, Poster_image, Director.Directors
 FROM Shows_display
 JOIN Age_rating ON Shows_Display.Rating_id = Age_Rating.Rating_id
 JOIN Show_Director ON Shows_Display.Show_id = Show_Director.Show_id
@@ -127,7 +127,7 @@ JOIN Director on Show_director.Director_id = Director.Director_id
 WHERE Show_Director.Director_id = ?
 ; '''
     results = query_db(sql, args=(Director_id,), one= False)
-    return render_template('Main.html', results = results)
+    return render_template('Selection.html', results = results)
 
 # Country_Select route
 @app.route('/Country_Select')
@@ -140,14 +140,14 @@ def Country_Select():
 #Countries movies route
 @app.route('/Country/<int:Country_id>')
 def Country_Movies(Country_id):
-    sql = '''SELECT Shows_display.Show_id, title, Year, Rating, Poster_image
+    sql = '''SELECT Shows_display.Show_id, title, Year, Rating_image, Poster_image, Rating, Country.Country
 FROM Shows_display
 JOIN Age_rating ON Shows_Display.Rating_id = Age_Rating.Rating_id
 JOIN Show_Country ON Shows_Display.Show_id = Show_Country.Show_id
 JOIN Country on Show_Country.Country_id = Country.Country_id
 WHERE Show_Country.Country_id = ?; '''
     results = query_db(sql, args=(Country_id,), one= False)
-    return render_template('Main.html', results = results)
+    return render_template('Selection.html', results = results)
 
 # Genre_Select route
 @app.route('/Genre_Select')
@@ -160,14 +160,14 @@ def Genre_Select():
 #Countries movies route
 @app.route('/Genre/<int:Genre_id>')
 def Genre_Movies(Genre_id):
-    sql = '''SELECT Shows_display.Show_id, title, Year, Rating, Poster_image
+    sql = '''SELECT Shows_display.Show_id, title, Year, Rating_image, Poster_image, Rating, Genre.Genre
 FROM Shows_display
 JOIN Age_rating ON Shows_Display.Rating_id = Age_Rating.Rating_id
 JOIN Show_Genre ON Shows_Display.Show_id = Show_Genre.Show_id
 JOIN Genre on Show_Genre.Genre_id = Genre.Genre_id
 WHERE Show_Genre.Genre_id = ?; '''
     results = query_db(sql, args=(Genre_id,), one= False)
-    return render_template('Main.html', results = results)
+    return render_template('Selection.html', results = results)
 
 #Copyright Disclaimer route
 @app.route("/Copyright_Disclaimer")
