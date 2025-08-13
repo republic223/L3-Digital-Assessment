@@ -2,4 +2,18 @@
 {% extends 'Header.html' %}
 <!-- where this file extends from -->
 {% block start %}
+    {% if not session['username'] %}
+    <h1>You must be logged in to be able to post an issue</h1>
+    {% endif %}
+    {% if session['username'] %}
+    <form action="/Issues", method="post">
+        <label for="Issue">Enter your Issue</label>
+        <input type="text", name="Issue"> 
+        <button type="submit">Submit</button>  
+    </form>
+    {% endif %}
+    {% for Issues in results %}
+    <h2>{{ Issues[0]}}</h2>
+    <h3>{{Issues[1]}}</h3>
+    {% endfor %}
 {% endblock %}

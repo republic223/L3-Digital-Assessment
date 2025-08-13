@@ -179,9 +179,20 @@ def Copyright_Disclaimer():
 def About():
     return render_template("About.html")
 
-@app.route("/Issues")
-def  Issues():
-    return render_template("Issues.html")
+# Issues route
+@app.route("/Issues", methods=["GET","POST"])
+def Issues():
+    if request.method == "POST":
+        Issue = request.form["Issue"]
+        User = session['username']
+        sql = '''INSERT INTO Issues (Issue, User_id) VALUES (?,?)'''
+        query_db(sql, args=(Issue, User,), commit=True)   
+    
+    sql = ''' Select User_data.Username, Issue 
+            FROM Issues
+            Join User_data ON Issues.User_id = User_data.User_id; '''
+    results = query_db(sql)
+    return render_template("Issues.html", results = results)
 
 # Sign Up route
 @app.route('/Sign_up', methods=["GET","POST"])
@@ -225,7 +236,7 @@ def login():
             # if user found program will check the Password
             if int(Check_Num) == user[0]:
                 if check_password_hash(password=password, pwhash=user[2]):
-                    session['username'] = user[1]
+                    session['username'] = user[0]
                     flash("Logged In")
                 # if password does not match program will flash password incorrect
                 else:
