@@ -2,16 +2,35 @@
 {% extends 'Header.html' %}
 <!-- where this file extends from -->
 {% block start %}
-<h1>Sign up page</h1>
-<!-- Form for user to input their creditals for adding to the database -->
- <form action="/Sign_up", method="post">
-    <Label for ='username'>Enter your Username</Label>
-    <input type="text", name="username">
-    <label for='password0'>Enter your password</label>
-    <input type="password", name='password0'>
-    <!-- will match passwords in App.py to ensure user has entered password correctly -->
-    <label for='password1'>Retype password to comfrim</label>
-    <input type="password", name='password1'>
-    <button type="submit">Sign up</button>
- </form>
+
+<h1 class="Section_Header">Sign up page</h1>
+<div class="Form_underlay">
+   <!-- Form for user to input their creditals for adding to the database -->
+   <form class="Sign_up_Login" action="/Sign_up", method="post">
+      <div class="Input">
+         <div class="label"><Label for ='username'>Enter your Username</Label></div>
+         <input type="text", name="username">
+      </div>
+      <div class="Input">
+         <div class="label"><label for='password0'>Enter your password</label></div>
+         <input type="password", name='password0'>
+      </div>
+      <!-- will match passwords in App.py to ensure user has entered password correctly -->
+      <div class="Input">
+         <div class="label"><label for='password1'>Retype password</label></div>
+         <input type="password", name='password1'>
+      </div>
+      <!--show message flashes -->
+      {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul>
+               {% for message in messages %}
+                  <li class="Flash_message">{{ message }}</li>
+               {% endfor %}
+            </ul>
+         {% endif %}
+      {% endwith %}
+      <button class="Submit" type="submit">Sign up</button>
+   </form>
+</div>
 {% endblock %}

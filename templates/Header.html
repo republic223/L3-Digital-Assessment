@@ -41,16 +41,6 @@
  
 {% block start %}
 {% endblock %}
-<!--show message flashes -->
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul>
-                {% for message in messages %}
-                <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
 <!-- Footer to be made -->
 <div class = "Footer">
     <table class="Footer_Table">

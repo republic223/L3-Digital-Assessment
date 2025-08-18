@@ -2,13 +2,15 @@
 {% extends 'Header.html' %}
 <!-- where this file extends from -->
 {% block start %}
-    <h1> Select your Genre</h1>
-    {% for Genre in results %}
-        <a href="/Genre/{{Genre[1]}}">
-            <!-- Class to change all of the selection pages -->
-            <div class="Selection">   
-                <h3>{{Genre[0]}}</h3>
-            </div>
-        </a>
-    {% endfor %}
+    <h1 class="Section_Header"> Select your Genre</h1>
+    <div class="Selection_Options">
+        {% for Genre in results %}
+            <a href="/Genre/{{Genre[1]}}">
+                <!-- Class to change all of the selection pages -->
+                <div class="Selection">   
+                    <h3>{{Genre[0]}}</h3>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
 {% endblock %}

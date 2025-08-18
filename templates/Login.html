@@ -2,20 +2,32 @@
 {% extends 'Header.html' %}
 <!-- where this file extends from -->
 {% block start %}
-<h1>Log In</h1>
-<!-- testing user login seesion worked -->
-    {% if session['username'] %}
-        <p>Welcome {{ session['username'][1] }}</p>
-    {% endif %}
-<!-- form used to provide the user input to compare with database results -->
- <form action="/Login", method="post">
-    <label for='username'>Username</label>
-    <input type="text", name='username'>
-    <label for='password'>Password</label>
-    <input type="password", name='password'>
-    <label type="text">Enter Check Number</label>
-    <input type="number" name="Check_Num">
-    <button type="enter">Log In</button>
-    
- </form>
+<h1 class="Section_Header">Log In</h1>
+<div class="Form_underlay">
+    <!-- form used to provide the user input to compare with database results -->
+    <form class="Sign_up_Login", action="/Login", method="post">
+        <div class="Input">
+            <div class="label"><label for='username'>Username</label></div>
+            <input type="text", name='username'>
+        </div>
+        <div class="Input">
+            <div class="label"><label for='password'>Password</label></div>
+            <input type="password", name='password'>
+        </div>
+        <div class="Input">
+            <div class="label"><label type="text">Enter Check Number</label></div>
+            <input type="number" name="Check_Num">
+        </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li class="Flash_message">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}        
+        <button type="enter">Log In</button>
+    </form>
+ </div>
 {% endblock %}

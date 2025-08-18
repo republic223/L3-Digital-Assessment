@@ -3,6 +3,7 @@ body{
     margin: 0;
     background-color: #b4cded;
     font-family: "Oswald";
+    
 }
 a{
     text-decoration: none;
@@ -14,7 +15,7 @@ a{
     text-align: center;
     margin: 0;
     padding-top: 10px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 
 
@@ -90,6 +91,41 @@ overflow: hidden;
 .Navigation li.right_nav{
     float: right;
 }
+/* All login/Sign up adjustments go here */
+.Form_underlay{
+    display: flex;
+    justify-content: center;
+    border: solid;
+    width: 250px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 20px;
+    background-color: powderblue;
+    margin-bottom: 50px;
+}
+.Input{
+    margin-top: 20px;
+}
+.Sign_up_Login{
+    text-align: center;
+    font-size: 30px;
+    
+}
+/* Made all imputs look the same */
+input{
+    border-radius: 10px;
+    border: none;
+}
+.Flash_message{
+    font-size: 20px;
+}
+button{
+    background-color: #344966;
+    color: #f0f4ef;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-top: 5px;
+}
 /* All card adjustments go here */
 .card{
     display: flex;
@@ -161,6 +197,28 @@ overflow: hidden;
     height: 75px;
     width: auto;
 }
+/* All _Select adjustments go here */
+.Selection_Options{
+    margin-top: 25px;
+    margin-bottom: 50px;
+}
+.Selection{
+    display: inline-flex;
+    justify-content: center;
+    width: 30%;
+    text-align: center;
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: black;
+    h3{
+        background-color: #f0f4ef;
+        border-radius: 10px;
+        padding: 10px;
+        border: solid;
+        border-width: 3px;
+    }
+}
 /* All Copyright Adjustments go here */
 .Copyright_Info{
     font-variant: lighter;
@@ -200,4 +258,3 @@ overflow: hidden;
     color: black;
     border-radius: 10px;
 }
-

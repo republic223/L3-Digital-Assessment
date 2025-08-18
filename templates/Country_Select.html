@@ -2,13 +2,16 @@
 {% extends 'Header.html' %}
 <!-- where this file extends from -->
 {% block start %}
-    <h1> Select your Country</h1>
-    {% for Country in results %}
-        <a href="/Country/{{Country[1]}}">
-            <!-- Class to change all of the selection pages -->
-            <div class="Selection">   
-                <h3>{{Country[0]}}</h3>
-            </div>
-        </a>
-    {% endfor %}
+    <h1 class="Section_Header"> Select your Country</h1>
+    <div class="Selection_Options">
+        {% for Country in results %}
+            <a href="/Country/{{Country[1]}}">
+                <!-- Class to change all of the selection pages -->
+                <div class="Selection">   
+                    <h3>{{Country[0]}}</h3>
+                </div>
+            </a>
+    
+        {% endfor %}
+    </div>
 {% endblock %}
