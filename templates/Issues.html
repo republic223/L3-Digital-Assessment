@@ -3,17 +3,21 @@
 <!-- where this file extends from -->
 {% block start %}
     {% if not session['username'] %}
-    <h1>You must be logged in to be able to post an issue</h1>
+    <h1 class="Section_Header">You must be logged in to be able to post an issue</h1>
     {% endif %}
     {% if session['username'] %}
-    <form action="/Issues", method="post">
-        <label for="Issue">Enter your Issue</label>
-        <input type="text", name="Issue"> 
+    <form class="Issues" action="/Issues", method="post">
+        <div class="Input">
+            <div class="label"><label for="Issue">Enter your Issue</label></div>
+            <input type="text", name="Issue"> 
+        </div>
         <button type="submit">Submit</button>  
     </form>
     {% endif %}
     {% for Issues in results %}
-    <h2>{{ Issues[0]}}</h2>
-    <h3>{{Issues[1]}}</h3>
+    <div class="Issues_Results">
+        <h2>{{ Issues[0]}}</h2>
+        <h3>{{Issues[1]}}</h3>
+    </div>
     {% endfor %}
 {% endblock %}

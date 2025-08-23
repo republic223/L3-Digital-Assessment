@@ -119,7 +119,7 @@ def Director_Select():
 #Directors movies route
 @app.route('/Director/<int:Director_id>')
 def Director_Movies(Director_id):
-    sql = '''SELECT Shows_display.Show_id, title, Year, Rating, Poster_image, Director.Directors
+    sql = '''SELECT Shows_display.Show_id, title, Year, Rating_image, Poster_image, Rating, Director.Directors
 FROM Shows_display
 JOIN Age_rating ON Shows_Display.Rating_id = Age_Rating.Rating_id
 JOIN Show_Director ON Shows_Display.Show_id = Show_Director.Show_id

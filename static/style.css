@@ -11,11 +11,17 @@ a{
 /* Section Header adjustments go here */
 .Section_Header{
     border: solid;
-    border-top: none;
     text-align: center;
-    margin: 0;
+    margin-top: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #344966;
+    color: #f0f4ef;
+    border-color: black;
+    border-radius: 20px;
 }
 
 
@@ -131,7 +137,7 @@ button{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 50px;
+    margin-top: 25px;
     margin-bottom: 100px;
     
     
@@ -148,6 +154,10 @@ button{
     background-color: #344966;
     color: #f0f4ef;
     border-radius: 20px;
+    h2{
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
     td{
         width: 50%;
     }
@@ -174,25 +184,38 @@ button{
     display: inline-block;
     margin-top: 15px;
     margin-bottom: 15px;
+    vertical-align: top;
 }
 .Show_page_Header{
-    text-align: center;
     border: solid;
+    text-align: center;
+    margin-top: 20px;
+    width: 1000px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #344966;
+    color: #f0f4ef;
     border-color: black;
-    border-top: none;
+    border-radius: 20px;
 }
 .Show_page_poster {
     width: auto;
-    height: 750px;
+    height: 550px;
     margin-left: 200px;
     margin-right: 250px;
+    border: solid;
+    margin-bottom: 60px;
 }
 .Show_page_Info{
     width: 750px;
     height: auto;
     border-color: black;
     border: solid;
+    background-color: powderblue;
+
 }
+
 .Show_page_Info img{
     height: 75px;
     width: auto;
@@ -233,6 +256,31 @@ button{
 /* All About adjustments go here */
 .About_info{
     text-align: center;
+}
+
+/* All issues adjustments go here */
+.Issues{
+    text-align: center;
+    border: solid;
+    padding: 10px;
+    margin-top: 20px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    background-color: powderblue;
+}
+.Issues_Results{
+    text-align: center;
+    border: solid;
+    background-color: #344966;
+    color: #f0f4ef;
+    border-color: black;
+    margin-left: auto;
+    margin-right: auto;
+    height: fit-content;
+    width: 750px;
+    margin-top: 20px;
 }
 /* All Footer adjustments go here */
 .Footer{
